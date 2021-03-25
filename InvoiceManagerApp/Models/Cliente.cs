@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagerApp.Models
 {
-    public class Cliente
+    public class Cliente : IEntity
     {
         public int Id { get; set; }
         public string Nome { get; set; }

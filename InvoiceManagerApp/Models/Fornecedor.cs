@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagerApp.Models
 {
-    public class Fornecedor
+    public class Fornecedor : IEntity
     {
         public int Id { get; set; }
         public string Nome { get; set; }

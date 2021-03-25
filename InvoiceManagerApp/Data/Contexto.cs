@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagerApp.Data
 {
-    public class ContextoDbContext : DbContext
+    public class Contexto : DbContext
     {
         public DbSet<Fornecedor> Fornecedor { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Fatura> Fatura { get; set; }
 
-        public ContextoDbContext(DbContextOptions<ContextoDbContext> options) : base(options)
+        public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
         }
 

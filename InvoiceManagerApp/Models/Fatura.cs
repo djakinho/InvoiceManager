@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagerApp.Models
 {
-    public class Fatura
+    public class Fatura : IEntity
     {
         public int Id { get; set; }
         public DateTime DtEmissao { get; set; }
