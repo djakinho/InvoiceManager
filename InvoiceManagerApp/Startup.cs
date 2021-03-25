@@ -1,4 +1,6 @@
 using InvoiceManagerApp.Data;
+using InvoiceManagerApp.Data.Interface;
+using InvoiceManagerApp.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,8 +29,14 @@ namespace InvoiceManagerApp
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ContextoDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("InvoiceConexion")));
+            #region DB
+            services.AddDbContext<Contexto>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("InvoiceConexion")));
+
+            services.AddScoped<IFornecedorRepository, FornecedorRepository>();
+            services.AddScoped<IFaturaRepository, FaturaRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
