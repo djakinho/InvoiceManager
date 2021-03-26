@@ -34,9 +34,14 @@ namespace InvoiceManagerApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Fornecedor fornecedor)
         {
-            _contexto.Fornecedor.Add(fornecedor);
-            _contexto.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _contexto.Fornecedor.Add(fornecedor);
+                _contexto.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(fornecedor);
         }
     }
 }

@@ -32,11 +32,16 @@ namespace InvoiceManagerApp.Controllers
         // POST - CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Cliente Cliente)
+        public IActionResult Create(Cliente cliente)
         {
-            _contexto.Cliente.Add(Cliente);
-            _contexto.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _contexto.Cliente.Add(cliente);
+                _contexto.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(cliente);
         }
     }
 }
