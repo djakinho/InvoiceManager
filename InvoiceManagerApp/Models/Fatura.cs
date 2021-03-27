@@ -14,23 +14,18 @@ namespace InvoiceManagerApp.Models
         public DateTime DtEmissao { get; set; }
         [Required(ErrorMessage = "O campo Data de Vencimento precisa ser preenchido")]
         public DateTime DtVencimento { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O valor Total precisa ser preenchido")]
         [Range(0.01, double.MaxValue, ErrorMessage = "O valor Total da fatura precisa ser igual ou maior que $0.01")]
         public decimal Total { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O Valor Pago precisa ser preenchido")]
         [Range(0.01, double.MaxValue, ErrorMessage = "O Valor Pago precisa ser igual ou maior que $0.01")]
         public decimal ValorPago { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Um Fornecedor precisa ser escolhido")]
         public int IdFornecedor { get; set; }
         public Fornecedor Fornecedor { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Um Cliente precisa ser escolhido")]
         public int IdCliente { get; set; }
         public Cliente Cliente { get; set; }
 
-        public Fatura()
-        {
-            Cliente = new Cliente();
-            Fornecedor = new Fornecedor();
-        }
     }
 }

@@ -36,6 +36,9 @@ namespace InvoiceManagerApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Fatura fatura)
         {
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();
+
             if (ModelState.IsValid)
             {
                 _contexto.Fatura.Add(fatura);
