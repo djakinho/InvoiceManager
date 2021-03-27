@@ -1,0 +1,96 @@
+﻿@model InvoiceManagerApp.Models.Fatura
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        
+        <div class="form-group row">
+            <h2 class="text-info pl-3"> Deletar Fatura</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="DtEmissao">Data Emissão</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="DtEmissao" disabled class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="DtVencimento">Data Vencimento</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="DtVencimento" disabled class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Total">Total</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Total" disabled class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ValorPago">Valor Pago</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ValorPago" disabled class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="IdCliente">Cliente</label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(model =>
+                        model.IdCliente, new SelectList(
+                            ViewBag.Clientes, "Id", "Nome"), "Selecione um Cliente")
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="IdFornecedor">Fornecedor</label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(model =>
+                        model.IdFornecedor, new SelectList(
+                            ViewBag.Fornecedores, "Id", "Nome"), "Selecione um Fornecedor")
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-danger w-100" value="Deletar" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @*Keep this empty*@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+} 

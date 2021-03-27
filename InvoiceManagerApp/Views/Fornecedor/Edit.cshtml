@@ -1,0 +1,72 @@
+﻿@model InvoiceManagerApp.Models.Fornecedor
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        
+        <div class="form-group row">
+            <h2 class="text-info pl-3"> Atualizar Fornecedor</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Nome"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Vertical"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Vertical">
+                            <option value="Energia">Energia</option>
+                            <option value="Agua">Água</option>
+                            <option value="Telecom">Telecom</option>
+                        </select>
+                        <span asp-validation-for="Vertical" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="LinkLogin">Link para Login</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="LinkLogin" class="form-control" />
+                        <span asp-validation-for="LinkLogin" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Atualizar" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @*Keep this empty*@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+} 

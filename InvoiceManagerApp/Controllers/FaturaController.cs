@@ -48,5 +48,83 @@ namespace InvoiceManagerApp.Controllers
 
             return View(fatura);
         }
+
+        // GET - EDIT
+        public IActionResult Edit(int? id)
+        {
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _contexto.Fatura.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        // POST - EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Fatura fatura)
+        {
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();
+
+            if (ModelState.IsValid)
+            {
+                _contexto.Fatura.Update(fatura);
+                _contexto.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(fatura);
+        }
+
+        // GET - DELETE
+        public IActionResult Delete(int? id)
+        {
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _contexto.Fatura.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        // POST - DELETE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();
+
+            var obj = _contexto.Fatura.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _contexto.Fatura.Remove(obj);
+            _contexto.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

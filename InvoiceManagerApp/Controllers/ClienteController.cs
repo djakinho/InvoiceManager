@@ -43,5 +43,71 @@ namespace InvoiceManagerApp.Controllers
 
             return View(cliente);
         }
+
+        // GET - EDIT
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _contexto.Cliente.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        // POST - EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                _contexto.Cliente.Update(cliente);
+                _contexto.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(cliente);
+        }
+
+        // GET - DELETE
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _contexto.Cliente.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        // POST - DELETE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var obj = _contexto.Cliente.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _contexto.Cliente.Remove(obj);
+            _contexto.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

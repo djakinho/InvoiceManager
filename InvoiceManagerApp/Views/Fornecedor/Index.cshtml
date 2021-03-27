@@ -38,7 +38,16 @@
                     <td width="50%">@obj.Nome</td>
                     <td width="30%">@obj.Vertical</td>
                     <td width="30%">@obj.LinkLogin</td>
-                    <td></td>
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Fornecedor" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-2">
+                                Editar
+                            </a>
+                            <a asp-controller="Fornecedor" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
+                                Deletar
+                            </a>
+                        </div>
+                    </td>
                 </tr>
                 }
             </tbody>
