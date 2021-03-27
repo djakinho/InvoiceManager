@@ -1,0 +1,5 @@
+{
+    "editor.tabCompletion": "onlySnippets",
+    "csharp.semanticHighlighting.enabled": true,
+    "omnisharp.enableRoslynAnalyzers": true
+}

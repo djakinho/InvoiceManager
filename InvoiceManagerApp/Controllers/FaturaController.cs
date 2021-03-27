@@ -26,17 +26,27 @@ namespace InvoiceManagerApp.Controllers
         // GET - CREATE
         public IActionResult Create()
         {
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();            
             return View();
         }
 
         // POST - CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Fatura Fatura)
+        public IActionResult Create(Fatura fatura)
         {
-            _contexto.Fatura.Add(Fatura);
-            _contexto.SaveChanges();
-            return RedirectToAction("Index");
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();
+
+            if (ModelState.IsValid)
+            {
+                _contexto.Fatura.Add(fatura);
+                _contexto.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(fatura);
         }
     }
 }

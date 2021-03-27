@@ -3,7 +3,7 @@
 <form method="post" asp-action="Create">
 
     <div class="border p-3">
-
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
             <h2 class="text-info pl-3"> Adicionar Fatura</h2>
         </div>
@@ -11,38 +11,66 @@
             <div class="col-8">
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="DtEmissao"></label>
+                        <label asp-for="DtEmissao">Data Emissão</label>
                     </div>
                     <div class="col-8">
                         <input asp-for="DtEmissao" class="form-control" />
+                        <span asp-validation-for="DtEmissao" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="DtVencimento"></label>
+                        <label asp-for="DtVencimento">Data Vencimento</label>
                     </div>
                     <div class="col-8">
                         <input asp-for="DtVencimento" class="form-control" />
+                        <span asp-validation-for="DtVencimento" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Total"></label>
+                        <label asp-for="Total">Total</label>
                     </div>
                     <div class="col-8">
                         <input asp-for="Total" class="form-control" />
+                        <span asp-validation-for="Total" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="ValorPago"></label>
+                        <label asp-for="ValorPago">Valor Pago</label>
                     </div>
                     <div class="col-8">
                         <input asp-for="ValorPago" class="form-control" />
+                        <span asp-validation-for="ValorPago" class="text-danger"></span>
                     </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="IdCliente">Cliente</label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(model =>
+                        model.IdCliente, new SelectList(
+                            ViewBag.Clientes, "Id", "Nome"), "Selecione um Cliente")
+                    </div>
+                    <span asp-validation-for="IdCliente" class="text-danger"></span>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="IdFornecedor">Fornecedor</label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(model =>
+                        model.IdFornecedor, new SelectList(
+                            ViewBag.Fornecedores, "Id", "Nome"), "Selecione um Fornecedor")
+                    </div>
+                    <span asp-validation-for="IdFornecedor" class="text-danger"></span>
 
                 </div>
                 <div class="form-group row">
@@ -63,4 +91,12 @@
         </div>
     </div>
 
-</form> 
+</form>
+
+@section Scripts {
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+} 

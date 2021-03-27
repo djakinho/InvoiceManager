@@ -31,6 +31,12 @@
                     <th>
                         Valor Pago
                     </th>
+                    <th>
+                        Fornecedor
+                    </th>
+                    <th>
+                        Cliente
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -42,6 +48,8 @@
                         <td width="30%">@obj.DtVencimento</td>
                         <td width="30%">@obj.Total</td>
                         <td width="30%">@obj.ValorPago</td>
+                        @* <td width="30%">@Html.NameForModel(model => model)</td> *@
+                        <td width="30%">@obj.Cliente</td>
                         <td></td>
                     </tr>
                 }
