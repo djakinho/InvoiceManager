@@ -52,7 +52,7 @@
                     <div class="col-8">
                         @Html.DropDownListFor(model =>
                         model.IdCliente, new SelectList(
-                            ViewBag.Clientes, "Id", "Nome"), "Selecione um Cliente")
+                            ViewBag.Clientes, "Id", "Nome"), "Selecione um Cliente", new { @disabled = "disable" })
                     </div>
 
                 </div>
@@ -63,7 +63,7 @@
                     <div class="col-8">
                         @Html.DropDownListFor(model =>
                         model.IdFornecedor, new SelectList(
-                            ViewBag.Fornecedores, "Id", "Nome"), "Selecione um Fornecedor")
+                            ViewBag.Fornecedores, "Id", "Nome"), "Selecione um Fornecedor", new { @disabled = "disable" })
                     </div>
 
                 </div>
