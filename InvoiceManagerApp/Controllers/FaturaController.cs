@@ -19,6 +19,8 @@ namespace InvoiceManagerApp.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Fornecedores = _contexto.Fornecedor.ToList();
+            ViewBag.Clientes = _contexto.Cliente.ToList();            
             IEnumerable<Fatura> objList = _contexto.Fatura;
             return View(objList);
         }
